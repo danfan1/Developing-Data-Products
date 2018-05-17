@@ -1,0 +1,31 @@
+---
+title: "Developing Data Product Week 2 Project"
+author: "Ying Wai Fan"
+date: "5/15/2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(leaflet)
+```
+
+## Google Offices in the Bay Area
+`r date()`
+```{r google, message=FALSE}
+googleOffices <- data.frame(
+  name = c("Mountain View Office", "San Francisco Office", "Sunnyvale Office", "San Bruno Office"),
+  lat = c(37.422138, 37.790175, 37.403881, 37.628391),
+  lng = c(-122.083698, -122.389881, -122.031593, -122.426489))
+googleIcon <- makeIcon(
+  iconUrl = "https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png",
+  iconWidth = 31*215/230, iconHeight = 31,
+  iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+
+googleOffices %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(icon=googleIcon)
+```
+
