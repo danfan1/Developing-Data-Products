@@ -11,7 +11,7 @@ library(leaflet)
 ```
 
 ## Google Offices in the Bay Area
-`r date()`
+`r Sys.Date()`
 ```{r google, message=FALSE}
 googleOffices <- data.frame(
   name = c("Mountain View Office", "San Francisco Office", "Sunnyvale Office", "San Bruno Office"),
