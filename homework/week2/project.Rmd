@@ -1,5 +1,5 @@
 ---
-title: "Developing Data Product Week 2 Project"
+title: "Developing Data Product Week 2 Project (Map on next page)"
 author: "Ying Wai Fan"
 date: "5/15/2018"
 output: ioslides_presentation
