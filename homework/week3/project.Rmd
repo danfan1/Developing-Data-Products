@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(plotly)
 ```
 
-## Samples (sorted) drawn from different distribution
+## 100 Samples (sorted) Drawn from Different Distributions
 ```{r sample, message=FALSE}
 set.seed(2018)
 x <- rep(x = 1:100, 3)
