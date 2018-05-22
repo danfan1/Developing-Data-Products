@@ -1,0 +1,24 @@
+---
+title: "Developing Data Product Week 3 Project"
+author: "Ying Wai Fan"
+date: "5/21/2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(plotly)
+```
+
+## Samples (sorted) drawn from different distribution
+```{r sample, message=FALSE}
+set.seed(2018)
+x <- rep(x = 1:100, 3)
+y1 <- sort(rnorm(100))
+y2 <- sort(rpois(100, 1))
+y3 <- sort(rbinom(100, 4, 0.5))
+y <- c(y1, y2, y3)
+color <- factor(rep(c('Normal', 'Poisson', 'Binormial'), each = 100))
+df <- data.frame(x=x, y=y, color=color)
+plot_ly(df, x=~x, y=~y, color=color, symbol=color)
+```
