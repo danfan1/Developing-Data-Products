@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Building Data Product Project</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Building Data Product Project">
+  <meta name="author" content="Ying Wai Fan">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Building Data Product Project</h1>
+    <h2>2018-05-23</h2>
+    <p>Ying Wai Fan<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The Shiny App</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>I built a shiny app to show how mathematical plots change with parameters.</p>
+
+<p>Link: <a href="https://yingwaifan.shinyapps.io/Developing_Data_Product_Course_Project/">https://yingwaifan.shinyapps.io/Developing_Data_Product_Course_Project/</a></p>
+
+<p><img height=400px src="assets/img/line.png"></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Two Tabs</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The app has two tabs:</p>
+
+<ol>
+<li>line: show how a line changes with slope and intercept.</li>
+<li>sine: show how a sine curve changes with frequency, phase shift and amplitude.</li>
+</ol>
+
+<p><img height=400px src="assets/img/sine.png"></img></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>ui.R and server.R</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>I put several sliderInput&#39;s in ui.R to select parameter values.
+Then in server.R, I use those parameter values to make mathematical plots.
+I fix the plot coordinates to better show changes in the plots.</p>
+
+<p>For example, the following is the code to generate the line plot.</p>
+
+<pre><code class="r">  output$plot1 &lt;- renderPlot({
+    x &lt;- seq(-5, 5, length.out = 11)
+    y &lt;- input$m * x + input$c
+    df &lt;- data.frame(x=x, y=y)
+    ggplot(df, aes(x, y)) + geom_line() +
+      coord_fixed(1, xlim = c(-5,5), ylim = c(-5,5), expand = FALSE) +
+      scale_x_continuous(breaks = -5:5) +
+      scale_y_continuous(breaks = -5:5)
+  })
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Example Plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This is the line plot when slope (<code>input$m</code>) is 2 and intercept (<code>input$c</code>) is 1.
+<img src="figure/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='The Shiny App'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Two Tabs'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='ui.R and server.R'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Example Plot'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
