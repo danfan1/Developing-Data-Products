@@ -54,7 +54,15 @@ For example, the following is the code to generate the line plot.
 
 ---
 
-## Example Plot
+## Example Line Plot
 
 This is the line plot when slope (`input$m`) is 2 and intercept (`input$c`) is 1.
 ![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
+`
+
+---
+
+## Example Sine Plot
+
+This is the sine plot when frequency (`input$w`) is 2, phase shift (`input$theta`) is pi/2 and amplitude (`input$A`) is 3.
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)

@@ -53,7 +53,7 @@ For example, the following is the code to generate the line plot.
 
 ---
 
-## Example Plot
+## Example Line Plot
 
 This is the line plot when slope (`input$m`) is 2 and intercept (`input$c`) is 1.
 ```{r echo=FALSE}
@@ -61,6 +61,24 @@ This is the line plot when slope (`input$m`) is 2 and intercept (`input$c`) is 1
     input <- list(m = 2, c = 1)
     x <- seq(-5, 5, length.out = 11)
     y <- input$m * x + input$c
+    df <- data.frame(x=x, y=y)
+    ggplot(df, aes(x, y)) + geom_line() +
+      coord_fixed(1, xlim = c(-5,5), ylim = c(-5,5), expand = FALSE) +
+      scale_x_continuous(breaks = -5:5) +
+      scale_y_continuous(breaks = -5:5)
+```
+`
+
+---
+
+## Example Sine Plot
+
+This is the sine plot when frequency (`input$w`) is 2, phase shift (`input$theta`) is pi/2 and amplitude (`input$A`) is 3.
+```{r echo=FALSE}
+    library(ggplot2)
+    input <- list(w = 2, theta = pi/2, A = 3)
+    x <- seq(-5, 5, length.out = 101)
+    y <- input$A * sin(input$w * x + input$theta)
     df <- data.frame(x=x, y=y)
     ggplot(df, aes(x, y)) + geom_line() +
       coord_fixed(1, xlim = c(-5,5), ylim = c(-5,5), expand = FALSE) +
